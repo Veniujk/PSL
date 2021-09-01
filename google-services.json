@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "781251956342",
+    "project_id": "hdpro-helpdesk-9504d",
+    "storage_bucket": "hdpro-helpdesk-9504d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781251956342:android:eaad6484049043385a1957",
+        "android_client_info": {
+          "package_name": "com.example.helpdesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781251956342-i60mfd3n335bgh42h09m3pi6q1fh9hq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVCXSQsfDV_6Wa0-snbfVEH-_7-TlyR1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781251956342-i60mfd3n335bgh42h09m3pi6q1fh9hq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

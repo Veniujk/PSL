@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Raport TI</string>
+    <!-- ********************************
+                SIGN UP STRINGS
+        ******************************** -->
+
+    <string name="sign_up_hint_email">E-mail</string>
+    <string name="sign_up_hint_password">Hasło</string>
+    <string name="sign_up_hint_password_v2">Powtórz hasło</string>
+    <string name="sign_up_button">ZAREJESTRUJ</string>
+    <string name="sign_up_header">ZAREJESTRUJ SIĘ</string>
+
+    <!-- ********************************
+                SIGN IN STRINGS
+        ******************************** -->
+    <string name="tv_sign_in">ZALOGUJ SIĘ</string>
+    <string name="sign_in_email_hint">E-mail</string>
+    <string name="sign_in_password_hint">Hasło</string>
+    <string name="sign_in_button">ZALOGUJ</string>
+    <string name="sign_in_register_button">ZAREJESTRUJ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- ********************************
+                  Report PAGE STRINGS
+          ******************************** -->
+    <string name="zone1_report_room_name">Wprowadź kontrolowany pokój</string>
+    <string name="zone2_report_room_name">Wprowadź kontrolowany pokój</string>
+    <string name="zone3_report_room_name">Wprowadź kontrolowany pokój</string>
+    <string name="zone4_report_room_name">Wprowadź kontrolowany pokój</string>
+    <string name="zone5_report_room_name">Wprowadź kontrolowany pokój</string>
+    <string name="zone6_report_room_name">Wprowadź kontrolowany pokój</string>
+
+
+    <!-- ********************************
+                MAIN PAGE STRINGS
+        ******************************** -->
+    <string name="main_page_tv_name">Imie</string>
+    <string name="main_page_ed_name">Twoje imie</string>
+    <string name="main_page_tv_surname">Nazwisko</string>
+    <string name="main_page_ed_surname">Twoje nazwisko</string>
+    <string name="main_page_tv_email">E-mail</string>
+    <string name="main_page_ed_email">Twoj E-mail</string>
+
+
+    <string name="foo">RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView
+    RecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerViewRecyclerView</string>
+
+    <!-- ********************************
+            LIST ROW STRINGS
+    ******************************** -->
+
+    <string name="row_name">Stanowisko</string>
+    <string name="row_date">Data kontroli</string>
+    <string name="row_zone">Email</string>
+    <string name="row_control">Zaliczenie</string>
+
+
+
+</resources>
