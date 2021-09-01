@@ -35,15 +35,25 @@
                 android:textColor="@color/light_black"
                 android:textSize="@dimen/tv_profile_page_text_size" />
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_border_rounded_cornwe">
             <EditText
                 android:id="@+id/userNameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewName"
-                android:layout_toRightOf="@id/userImage"
-                android:hint="@string/main_page_ed_name"
-                android:textColor="@color/light_black" />
-
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Wprowadz imię!"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="15sp"/>
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textViewSurname"
@@ -54,25 +64,40 @@
                 android:text="@string/main_page_tv_surname"
                 android:textColor="@color/light_black"
                 android:textSize="@dimen/tv_profile_page_text_size" />
-
-            <EditText
-                android:id="@+id/userSurnameET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewSurname"
-                android:layout_toRightOf="@id/userImage"
-                android:hint="@string/main_page_ed_surname"
-                android:textColor="@color/light_black" />
-
-            <Button
-                android:id="@+id/submitDataProfile"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginHorizontal="@dimen/button_sign_in_margin_horizontal"
-                android:background="@color/material_medium"
+                android:background="@drawable/blue_border_rounded_cornwe">
+                <EditText
+                    android:id="@+id/userSurnameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Wprowadz nazwisko!"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingLeft="17dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/submitDataProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/blue_fill__rounded_color"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
                 android:text="Aktualizuj"
-                android:textColor="@android:color/white" />
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -107,7 +132,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Twoje Kontrole"
+                android:text="Twoje Zgłoszenia"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="italic|bold" />

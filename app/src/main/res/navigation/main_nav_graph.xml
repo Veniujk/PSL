@@ -20,10 +20,10 @@
             app:destination="@id/raportFragmentz1" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_raport"
         android:id="@+id/raportFragment"
         android:name="com.example.helpdesk.raport.RaportFragment"
-        android:label="Dodaj Raport" >
+        android:label="Wyślij zgłoszenie"
+        tools:layout="@layout/fragment_raport">
         <action
             android:id="@+id/action_raportFragment_to_raportFragmentz1"
             app:destination="@id/raportFragmentz1" />

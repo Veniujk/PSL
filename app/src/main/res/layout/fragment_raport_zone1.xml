@@ -1,180 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_page_color">
-     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="raport.RaportFragment">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+   <!--EditText: Input the recipient-->
 
-        <TextView
-            android:id="@+id/zone1_TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:text="Wybierz kontrolowane stanowisko: " />
+   <!--EditText: Input the subject of email-->
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@drawable/blue_border_rounded_cornwe">
+   <EditText
+       android:id="@+id/subjectEt"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@android:color/transparent"
+       android:fontFamily="@font/poppins_regular"
+       android:hint="Temat zgłoszenia"
+       android:inputType="text|textCapSentences"
+       android:maxLines="1"
+       android:paddingLeft="17dp"
+       android:paddingTop="15dp"
+       android:paddingBottom="15dp"
+       android:textCursorDrawable="@drawable/cursor_color"
+       android:textSize="12sp"/>
 
-        <com.example.helpdesk.data.MySpinner
-            android:id="@+id/zone1_name_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="8" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:id="@+id/zone1_TextView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:text="Kontrola sprzętu: " />
-        <CheckBox
-            android:id="@+id/zone1_report_lp1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Komputer - działa prawidłowo." />
+   </RelativeLayout>
 
-        <CheckBox
-            android:id="@+id/zone1_report_lp2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Myszka - działa prawidłowo." />
+   <!--EditText: Input the message-->
 
-        <CheckBox
-            android:id="@+id/zone1_report_lp3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Klawiatura - działa prawidłowo." />
+   <RelativeLayout
+       android:layout_marginTop="12.7dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@drawable/blue_border_rounded_cornwe">
+      <EditText
+          android:id="@+id/messageEt"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@android:color/transparent"
+          android:fontFamily="@font/poppins_regular"
+          android:hint="Wprowadz treść zgłoszenia tutaj..."
+          android:inputType="text|textCapSentences"
+          android:paddingLeft="17dp"
+          android:paddingTop="15dp"
+          android:paddingBottom="15dp"
+          android:minHeight="200dp"
+          android:textCursorDrawable="@drawable/cursor_color"
+          android:textSize="12sp"/>
 
-        <CheckBox
-            android:id="@+id/zone1_report_lp4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Skaner kodów kreskowych - działa prawidłowo." />
+   </RelativeLayout>
+   <!--Button:   Launch existing email clients to send email-->
 
-        <CheckBox
-            android:id="@+id/zone1_report_lp5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Monitor - działa prawidłowo." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="UPS - działa prawidłowo." />
-        <TextView
-            android:id="@+id/zone1_TextView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:text="Kontrola skanera: " />
-        <CheckBox
-            android:id="@+id/zone1_report_lp7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Flatbed - nie zacina się." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Flatbed - nie wydaje nieporządanych dzwięków." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Flatbed - skanuje w dobrej jakości." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Flatbed - dobrze przycina strony." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Flatbed - skanuje z odpowiednią prędkością." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - nie zacina się." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - nie wydaje nieporządanych dzwięków." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - skanuje w dobrej jakości." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - dobrze przycina strony." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - skanuje z wysoką prędkościa." />
-
-        <CheckBox
-            android:id="@+id/zone1_report_lp17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ADF - rolki są w dobrym stanie." />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-           <com.google.android.material.textfield.TextInputEditText
-               android:id="@+id/text_input_uwagi"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Uwagi:" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
