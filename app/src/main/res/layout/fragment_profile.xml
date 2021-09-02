@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="@dimen/iv_profile_page_margin_end"
             tools:src="@tools:sample/avatars" />
 
@@ -26,14 +26,6 @@
             android:layout_toEndOf="@+id/userImage"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/userImage"
-                android:text="@string/main_page_tv_name"
-                android:textColor="@color/light_black"
-                android:textSize="@dimen/tv_profile_page_text_size" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -45,28 +37,40 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="Wprowadz imię!"
-                android:inputType="textEmailAddress"
+                android:hint="Imię i Nazwisko"
+                android:inputType="textPersonName"
                 android:maxLines="1"
                 android:paddingLeft="17dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="15sp"/>
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/textViewSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/userNameET"
-                android:layout_toRightOf="@id/userImage"
-                android:text="@string/main_page_tv_surname"
-                android:textColor="@color/light_black"
-                android:textSize="@dimen/tv_profile_page_text_size" />
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/blue_border_rounded_cornwe">
+                            <TextView
+                        android:id="@+id/userEmailET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="1dp"
+                        android:hint="@string/main_page_ed_email"
+                        android:maxLines="1"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:textSize="15sp"/>
+                        </RelativeLayout>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:background="@drawable/blue_border_rounded_cornwe">
                 <EditText
                     android:id="@+id/userSurnameET"
@@ -74,78 +78,78 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="Wprowadz nazwisko!"
-                    android:inputType="textEmailAddress"
+                    android:hint="Organizacja"
+                    android:inputType="textPersonName"
                     android:maxLines="1"
                     android:paddingLeft="17dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="15sp"/>
             </RelativeLayout>
+                        <TextView
+                            android:id="@+id/submitDataProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/blue_fill__rounded_color"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Aktualizuj"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/submitDataProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/blue_fill__rounded_color"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:text="Aktualizuj"
-                android:textColor="#ffffff"
-                android:textSize="15sp" />
+                    </LinearLayout>
+<!--
+                    <TextView
+                        android:id="@+id/textViewEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/userImage"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/main_page_tv_email"
+                        android:textColor="@color/light_black"
+                        android:textSize="@dimen/tv_profile_page_text_size" />
 
-        </LinearLayout>
+                            <TextView
+                                android:id="@+id/userEmailETA"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/textViewEmail"
+                                android:layout_marginTop="1dp"
+                                android:hint="@string/main_page_ed_email"
+                                android:textColor="@color/light_black"
+                                android:textSize="15sp" />
+-->
+<!--
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@id/userEmailETA"
+                                android:layout_marginTop="16dp"
+                                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/userImage"
-            android:layout_marginTop="24dp"
-            android:text="@string/main_page_tv_email"
-            android:textColor="@color/light_black"
-            android:textSize="@dimen/tv_profile_page_text_size" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Twoje Zgłoszenia"
+                                    android:textAlignment="center"
+                                    android:textSize="18sp"
+                                    android:textStyle="italic|bold" />
 
-        <TextView
-            android:id="@+id/userEmailET"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewEmail"
-            android:layout_marginTop="1dp"
-            android:hint="@string/main_page_ed_email"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recycleruserRaport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="-9dp"
+                                    android:background="@android:color/transparent"
+                                    tools:listitem="@layout/list_row" />
 
+                            </LinearLayout>
+                            -->
+                        </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/userEmailET"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Twoje Zgłoszenia"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="italic|bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleruserRaport"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="-9dp"
-                android:background="@android:color/transparent"
-                tools:listitem="@layout/list_row" />
-
-        </LinearLayout>
-    </RelativeLayout>
-
-</FrameLayout>
+                    </FrameLayout>

@@ -1,31 +1,36 @@
 package com.example.helpdesk.raport
 
 
-import android.app.ProgressDialog.show
-import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.navigation.fragment.findNavController
 import com.example.helpdesk.BaseFragment
 import com.example.helpdesk.R
-import com.example.helpdesk.data.Raport
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_raport_zone1.*
+import kotlinx.android.synthetic.main.fragment_mail.*
 import java.util.*
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
+import android.util.Log
+import androidx.fragment.app.viewModels
+import com.example.helpdesk.data.User
+import com.example.helpdesk.profile.ProfileViewModel
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
+import kotlinx.android.synthetic.main.fragment_profile.*
+import javax.mail.*
+import javax.mail.internet.*
 
 
 class RaportFragment : BaseFragment() {
     private val cloud = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private val DEBUG = "REG_DEBUG"
+    private val profileVm by viewModels<ProfileViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +47,59 @@ class RaportFragment : BaseFragment() {
 
     }
 
-    private fun sendEmail(recipient: String, subject: String, message: String) {
+    fun mail(){
+        val userName =  "app@hdpro.pl"
+        val password =  "PizzaItaliano123"
+        //val userName =  args[0]
+       // val password =  args[1]
+        // FYI: passwords as a command arguments isn't safe
+        // They go into your bash/zsh history and are visible when running ps
+
+        val emailFrom = "app@hdpro.pl"
+        val emailTo = "konrad.mocko@hdpro.pl"
+        val emailCC = ""
+
+        val emailUser = auth.currentUser?.email
+        val subject = subjectEt.text.toString().trim()
+        val text = messageEt.text.toString().trim()
+        val deadline = deadlineET.text.toString().trim()
+
+        val props = Properties()
+        putIfMissing(props, "mail.smtp.host", "top-hosting.nazwa.pl")
+        putIfMissing(props, "mail.smtp.port", "587")
+        putIfMissing(props, "mail.smtp.auth", "true")
+        putIfMissing(props, "mail.smtp.starttls.enable", "true")
+
+        val session = Session.getDefaultInstance(props, object : javax.mail.Authenticator() {
+            override fun getPasswordAuthentication(): PasswordAuthentication {
+                return PasswordAuthentication(userName, password)
+            }
+        })
+
+        session.debug = true
+
+        try {
+            val mimeMessage = MimeMessage(session)
+            mimeMessage.setFrom(InternetAddress(emailFrom))
+            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo, false))
+            mimeMessage.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCC, false))
+            mimeMessage.setText("Email: " + emailUser + "\n" +"Deadline zlecenia to: " + deadline + "\n" +
+                                    "wiadomosc : " + text )
+            //mimeMessage.setText(text)
+
+            mimeMessage.subject = subject
+            mimeMessage.sentDate = Date()
+
+            val smtpTransport = session.getTransport("smtp")
+            smtpTransport.connect()
+            smtpTransport.sendMessage(mimeMessage, mimeMessage.allRecipients)
+            smtpTransport.close()
+        } catch (messagingException: MessagingException) {
+            messagingException.printStackTrace()
+        }
+    }
+
+ /*   private fun sendEmail(recipient: String, subject: String, message: String) {
         /*ACTION_SEND action to launch an email client installed on your Android device.*/
         val mIntent = Intent(Intent.ACTION_SEND)
         /*To send an email you need to specify mailto: as URI using setData() method
@@ -68,14 +125,18 @@ class RaportFragment : BaseFragment() {
             // Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
 
+    }*/
+    private fun putIfMissing(props: Properties, key: String, value: String) {
+        if (!props.containsKey(key)) {
+            props[key] = value
+        }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_raport_zone1, container, false)
+        return inflater.inflate(R.layout.fragment_mail, container, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -85,15 +146,16 @@ class RaportFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
        //val recipient = recipientEt.text.toString().trim()
-        val recipient = "helpdesk@hdpro.pl"
-        val subject = subjectEt.text.toString().trim()
-        val message = messageEt.text.toString().trim()
+        // val recipient = "helpdesk@hdpro.pl"
+        // val subject = subjectEt.text.toString().trim()
+       // val message = messageEt.text.toString().trim()
         when (item.itemId) {
             R.id.send_action -> {
-                sendEmail(recipient, subject, message)
+                mail()
+                //sendEmail(recipient, subject, message)
             findNavController()
                 .navigate(RaportFragmentDirections.actionRaportFragmentToHomeFragment().actionId)
-                    Snackbar.make(requireView(), "Raport został wysłany!", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(requireView(), "Zgłoszenie zostało wysłane!", Snackbar.LENGTH_SHORT)
                 .show()
             }
         }
@@ -103,7 +165,10 @@ class RaportFragment : BaseFragment() {
 
         return false
     }
+
 }
+
+
 /*
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)

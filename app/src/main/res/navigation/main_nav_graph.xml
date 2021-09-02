@@ -50,7 +50,7 @@
         android:id="@+id/raportFragmentz1"
         android:name="com.example.helpdesk.raport.RaportZone1Fragment"
         android:label="Strefa I"
-        tools:layout="@layout/fragment_raport_zone1">
+        tools:layout="@layout/fragment_mail">
         <action
             android:id="@+id/action_raportFragmentz1_to_homeFragment"
             app:destination="@id/homeFragment" />

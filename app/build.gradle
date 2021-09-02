@@ -37,12 +37,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
+    }
+
 }
 
 dependencies {
     //email
-    implementation 'com.sun.mail:android-mail:1.6.0'
-    implementation 'com.sun.mail:android-activation:1.6.0'
+    implementation 'com.sun.mail:android-mail:1.6.6'
+    implementation 'com.sun.mail:android-activation:1.6.6'
 
     //Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:28.4.0')

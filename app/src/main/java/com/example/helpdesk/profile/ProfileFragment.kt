@@ -60,8 +60,8 @@ class ProfileFragment : BaseFragment(), OnRaportItemLongClick {
         super.onViewCreated(view, savedInstanceState)
         setupSubmitDataClick()
         setupTakePictureClick()
-        recycleruserRaport.layoutManager = LinearLayoutManager(requireContext())
-        recycleruserRaport.adapter = adapter
+      //  recycleruserRaport.layoutManager = LinearLayoutManager(requireContext())
+      //  recycleruserRaport.adapter = adapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -124,7 +124,7 @@ class ProfileFragment : BaseFragment(), OnRaportItemLongClick {
         submitDataProfile.setOnClickListener {
             val name = userNameET.text.trim().toString()
             val surname = userSurnameET.text.trim().toString()
-
+            //val map = mapOf("name" to name)
             val map = mapOf("name" to name, "surname" to surname)
             profileVm.editProfileData(map)
             Snackbar.make(requireView(), "Zaktualizowano dane!", Snackbar.LENGTH_SHORT)
