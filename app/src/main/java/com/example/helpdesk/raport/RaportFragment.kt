@@ -46,8 +46,13 @@ class RaportFragment : BaseFragment() {
        // }
 
     }
-
-    fun mail(){
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        profileVm.user.observe(viewLifecycleOwner, { user ->
+            //mail(user)
+        })
+    }
+    fun mail(user: User){
         val userName =  "app@hdpro.pl"
         val password =  "PizzaItaliano123"
         //val userName =  args[0]
@@ -58,7 +63,10 @@ class RaportFragment : BaseFragment() {
         val emailFrom = "app@hdpro.pl"
         val emailTo = "konrad.mocko@hdpro.pl"
         val emailCC = ""
+        //val docRef = cloud.collection("users").document(auth.currentUser?.uid!!).collection("name")
 
+      //  val curentUser = cloud.collection("users").document(auth.currentUser?.uid!!)
+        val curentUser = user.name
         val emailUser = auth.currentUser?.email
         val subject = subjectEt.text.toString().trim()
         val text = messageEt.text.toString().trim()
@@ -83,7 +91,7 @@ class RaportFragment : BaseFragment() {
             mimeMessage.setFrom(InternetAddress(emailFrom))
             mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo, false))
             mimeMessage.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCC, false))
-            mimeMessage.setText("Email: " + emailUser + "\n" +"Deadline zlecenia to: " + deadline + "\n" +
+            mimeMessage.setText("Zleceniodawca: " + curentUser + "\n"+ "Email: " + emailUser + "\n" +"Deadline zlecenia to: " + deadline + "\n" +
                                     "wiadomosc : " + text )
             //mimeMessage.setText(text)
 
@@ -151,10 +159,13 @@ class RaportFragment : BaseFragment() {
        // val message = messageEt.text.toString().trim()
         when (item.itemId) {
             R.id.send_action -> {
-                mail()
+                profileVm.user.observe(viewLifecycleOwner, { user ->
+                    mail(user)
+                })
+               // mail(User())
                 //sendEmail(recipient, subject, message)
             findNavController()
-                .navigate(RaportFragmentDirections.actionRaportFragmentToHomeFragment().actionId)
+                .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
                     Snackbar.make(requireView(), "Zgłoszenie zostało wysłane!", Snackbar.LENGTH_SHORT)
                 .show()
             }
