@@ -2,6 +2,7 @@ package com.example.helpdesk.raport
 
 
 import android.app.Activity.RESULT_OK
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.view.*
@@ -21,6 +22,7 @@ import androidx.fragment.app.viewModels
 import com.example.helpdesk.data.User
 import com.example.helpdesk.profile.ProfileViewModel
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.android.synthetic.main.fragment_profile.*
 import javax.mail.*
@@ -49,6 +51,28 @@ class RaportFragment : BaseFragment() {
 
         })
     }
+    private fun FirebaseRaport(user:User){
+        val data = hashMapOf<Any, Any>()
+     //   data.put("control", control(data).toString())
+        auth.currentUser?.uid?.let { it1 -> data.put("uid", it1) }
+        data.put("date", Timestamp(Date()))
+        user.surname?.let { data.put("Organization", it) }
+        user.name?.let { data.put("Name", it) }
+        data.put("deadline", deadlineET.text.toString().trim())
+        data.put("subject", subjectEt.text.toString().trim())
+        auth.currentUser?.email?.let { data.put("uemail", it) }
+            cloud.collection("raports")
+                .add(data)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(
+                        ContentValues.TAG,
+                        "DocumentSnapshot written with ID: ${documentReference.id}"
+                    )
+                }
+                .addOnFailureListener { e ->
+                    Log.w(ContentValues.TAG, "Error adding document", e)
+                }
+        }
 
     private fun mail(user: User){
         val userName =  "app@hdpro.pl"
@@ -154,6 +178,7 @@ class RaportFragment : BaseFragment() {
             R.id.send_action -> {
                 profileVm.user.observe(viewLifecycleOwner, { user ->
                     mail(user)
+                    FirebaseRaport(user)
                 })
 
                 findNavController()

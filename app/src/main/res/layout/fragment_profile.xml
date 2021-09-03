@@ -20,6 +20,7 @@
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
+            android:id="@+id/userSection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -103,32 +104,11 @@
                             android:textSize="15sp" />
 
                     </LinearLayout>
-<!--
-                    <TextView
-                        android:id="@+id/textViewEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/userImage"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/main_page_tv_email"
-                        android:textColor="@color/light_black"
-                        android:textSize="@dimen/tv_profile_page_text_size" />
 
-                            <TextView
-                                android:id="@+id/userEmailETA"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/textViewEmail"
-                                android:layout_marginTop="1dp"
-                                android:hint="@string/main_page_ed_email"
-                                android:textColor="@color/light_black"
-                                android:textSize="15sp" />
--->
-<!--
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_below="@id/userEmailETA"
+                                android:layout_below="@+id/userSection"
                                 android:layout_marginTop="16dp"
                                 android:orientation="vertical">
 
@@ -149,7 +129,7 @@
                                     tools:listitem="@layout/list_row" />
 
                             </LinearLayout>
-                            -->
+
                         </RelativeLayout>
 
                     </FrameLayout>

@@ -22,7 +22,7 @@ abstract class BaseFragment: Fragment() {
         startActivity(intent)
     }
 
-    fun control(data:HashMap<Any,Any>): Int {
+   /* fun control(data:HashMap<Any,Any>): Int {
         var suma = 0
         for ((key,value) in data) {
 
@@ -32,5 +32,5 @@ abstract class BaseFragment: Fragment() {
         }
 
         return ((suma.toDouble() / data.size) * 100).roundToInt()
-    }
+    }*/
 }

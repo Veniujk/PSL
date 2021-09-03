@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Raport (val id: String? = null,
                    val name: String? = null,
-                   val zone: String? = null,
+                   val subject: String? = null,
                    val date: Timestamp? = null,
                    val control: String? = null,
                    val uid:String? = null,

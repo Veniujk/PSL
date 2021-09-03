@@ -53,7 +53,7 @@
             LIST ROW STRINGS
     ******************************** -->
 
-    <string name="row_name">Stanowisko</string>
+    <string name="row_name">Temat zgłoszenia</string>
     <string name="row_date">Data kontroli</string>
     <string name="row_zone">Email</string>
     <string name="row_control">Zaliczenie</string>
