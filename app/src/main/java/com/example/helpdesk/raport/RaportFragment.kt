@@ -1,6 +1,7 @@
 package com.example.helpdesk.raport
 
 
+import android.app.Activity.RESULT_OK
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.view.*
@@ -31,46 +32,40 @@ class RaportFragment : BaseFragment() {
     private val auth = FirebaseAuth.getInstance()
     private val DEBUG = "REG_DEBUG"
     private val profileVm by viewModels<ProfileViewModel>()
+    private val pickFromGallery:Int = 101
+    lateinit var uri: Uri
+    lateinit var tvAttachment: TextView
+    lateinit var attachment: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
-        //button click to get input and call sendEmail method
-       // sendEmailBtn.setOnClickListener {
-            //get input from EditTexts and save in variables
-
-
-            //method call for email intent with these inputs as parameters
-            //sendEmail(recipient, subject, message)
-       // }
 
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         profileVm.user.observe(viewLifecycleOwner, { user ->
-            //mail(user)
+
         })
     }
-    fun mail(user: User){
+
+    private fun mail(user: User){
         val userName =  "app@hdpro.pl"
         val password =  "PizzaItaliano123"
-        //val userName =  args[0]
-       // val password =  args[1]
-        // FYI: passwords as a command arguments isn't safe
+         // FYI: passwords as a command arguments isn't safe
         // They go into your bash/zsh history and are visible when running ps
 
         val emailFrom = "app@hdpro.pl"
-        val emailTo = "konrad.mocko@hdpro.pl"
+        val emailTo = "helpdesk@hdpro.pl"
         val emailCC = ""
-        //val docRef = cloud.collection("users").document(auth.currentUser?.uid!!).collection("name")
-
-      //  val curentUser = cloud.collection("users").document(auth.currentUser?.uid!!)
         val curentUser = user.name
+        val organizationUser = user.surname
         val emailUser = auth.currentUser?.email
         val subject = subjectEt.text.toString().trim()
         val text = messageEt.text.toString().trim()
         val deadline = deadlineET.text.toString().trim()
+
 
         val props = Properties()
         putIfMissing(props, "mail.smtp.host", "top-hosting.nazwa.pl")
@@ -91,12 +86,18 @@ class RaportFragment : BaseFragment() {
             mimeMessage.setFrom(InternetAddress(emailFrom))
             mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo, false))
             mimeMessage.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCC, false))
-            mimeMessage.setText("Zleceniodawca: " + curentUser + "\n"+ "Email: " + emailUser + "\n" +"Deadline zlecenia to: " + deadline + "\n" +
-                                    "wiadomosc : " + text )
-            //mimeMessage.setText(text)
-
+            mimeMessage.setText("PAMIĘTAJ O PRZYPISANIU ODPOWIEDNIEGO KLIENTA DO ZLECENIA!!!" + "\n" + "\n" +"Zleceniodawca: " + curentUser + "\n"+"Organizacja: " + organizationUser + "\n"+ "Email: " + emailUser + "\n" +"Deadline: " + deadline + "\n" +
+                                    "Wiadomosc: " + text )
             mimeMessage.subject = subject
             mimeMessage.sentDate = Date()
+
+
+
+           /* val emailIntent = Intent(Intent.ACTION_SEND)
+            emailIntent.putExtra(Intent.EXTRA_STREAM, uri)
+            this.startActivity(Intent.createChooser(emailIntent, "Sending email..."))*/
+
+
 
             val smtpTransport = session.getTransport("smtp")
             smtpTransport.connect()
@@ -104,36 +105,27 @@ class RaportFragment : BaseFragment() {
             smtpTransport.close()
         } catch (messagingException: MessagingException) {
             messagingException.printStackTrace()
+
         }
     }
+    private fun openFolder() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.putExtra("return-data", true)
+        this.startActivityForResult(Intent.createChooser(intent, "Complete action using"), pickFromGallery)
 
- /*   private fun sendEmail(recipient: String, subject: String, message: String) {
-        /*ACTION_SEND action to launch an email client installed on your Android device.*/
-        val mIntent = Intent(Intent.ACTION_SEND)
-        /*To send an email you need to specify mailto: as URI using setData() method
-        and data type will be to text/plain using setType() method*/
-        mIntent.data = Uri.parse("mailto:")
-        mIntent.type = "text/plain"
-        // put recipient email in intent
-        /* recipient is put as array because you may wanna send email to multiple emails
-           so enter comma(,) separated emails, it will be stored in array*/
-        mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
-        //put the Subject in the intent
-        mIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
-        //put the message in the intent
-        mIntent.putExtra(Intent.EXTRA_TEXT, message)
-
-
-        try {
-            //start email intent
-            startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
-        } catch (e: Exception) {
-            //if any thing goes wrong for example no email client application or any exception
-            //get and show exception message
-            // Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == pickFromGallery && resultCode == RESULT_OK) {
+            if (data != null) {
+                uri = data.data!!
+            }
+            tvAttachment.text = uri.lastPathSegment
+            tvAttachment.visibility = View.VISIBLE
         }
-
-    }*/
+    }
     private fun putIfMissing(props: Properties, key: String, value: String) {
         if (!props.containsKey(key)) {
             props[key] = value
@@ -153,26 +145,23 @@ class RaportFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-       //val recipient = recipientEt.text.toString().trim()
-        // val recipient = "helpdesk@hdpro.pl"
-        // val subject = subjectEt.text.toString().trim()
-       // val message = messageEt.text.toString().trim()
+     /*   when (item.itemId) {
+            R.id.btAttachment -> {
+                openFolder()
+            }
+        }*/
         when (item.itemId) {
             R.id.send_action -> {
                 profileVm.user.observe(viewLifecycleOwner, { user ->
                     mail(user)
                 })
-               // mail(User())
-                //sendEmail(recipient, subject, message)
-            findNavController()
-                .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
-                    Snackbar.make(requireView(), "Zgłoszenie zostało wysłane!", Snackbar.LENGTH_SHORT)
-                .show()
+
+                findNavController()
+                    .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
+                Snackbar.make(requireView(), "Zgłoszenie zostało wysłane!", Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
-               // openReportZone1Click(arguments?.get("raport"))}
-            //  requireActivity().finish()
-
 
         return false
     }

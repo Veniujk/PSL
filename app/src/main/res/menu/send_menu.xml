@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+   <!-- <item
+        android:id="@+id/btAttachment"
+        android:layout_alignParentEnd="true"
+        android:icon="@drawable/attachment"
+        android:title="Attachment"
+        app:showAsAction="ifRoom" /> -->
     <item
         android:id="@+id/send_action"
         android:icon="@drawable/baseline_send_white_48"
