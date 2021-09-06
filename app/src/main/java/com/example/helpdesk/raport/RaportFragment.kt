@@ -19,6 +19,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.viewModels
+import com.example.helpdesk.data.Raport
 import com.example.helpdesk.data.User
 import com.example.helpdesk.profile.ProfileViewModel
 import com.google.android.gms.tasks.Task
@@ -52,14 +53,16 @@ class RaportFragment : BaseFragment() {
         })
     }
     private fun FirebaseRaport(user:User){
+
         val data = hashMapOf<Any, Any>()
-     //   data.put("control", control(data).toString())
         auth.currentUser?.uid?.let { it1 -> data.put("uid", it1) }
         data.put("date", Timestamp(Date()))
         user.surname?.let { data.put("Organization", it) }
         user.name?.let { data.put("Name", it) }
         data.put("deadline", deadlineET.text.toString().trim())
         data.put("subject", subjectEt.text.toString().trim())
+        data.put("message", messageEt.text.toString().trim())
+
         auth.currentUser?.email?.let { data.put("uemail", it) }
             cloud.collection("raports")
                 .add(data)
@@ -89,6 +92,7 @@ class RaportFragment : BaseFragment() {
         val subject = subjectEt.text.toString().trim()
         val text = messageEt.text.toString().trim()
         val deadline = deadlineET.text.toString().trim()
+
 
 
         val props = Properties()
@@ -162,37 +166,108 @@ class RaportFragment : BaseFragment() {
 
         return inflater.inflate(R.layout.fragment_mail, container, false)
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val arguementRaport = arguments?.get("raport")
+
+        if (arguementRaport != null) {
+            editReportClick(arguementRaport as Raport)
+        }
+
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.send_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-     /*   when (item.itemId) {
+        /*   when (item.itemId) {
             R.id.btAttachment -> {
                 openFolder()
             }
         }*/
-        when (item.itemId) {
-            R.id.send_action -> {
+
+            when (item.itemId) {
+                R.id.send_action -> {
+                        checkEditable(arguments?.get("raport"))
+                }
+            }
+            return false
+
+    }
+    private fun checkEditable(argumentRaport: Any?) {
+        var raport: Raport? = null
+        val subject = subjectEt.text.toString().trim()
+        val text = messageEt.text.toString().trim()
+        val deadline = deadlineET.text.toString().trim()
+        if (argumentRaport != null) {
+            raport = (argumentRaport as Raport)
+        }
+
+
+        if (text.trim().length <= 0) {
+            Snackbar.make(
+                requireView(),
+                "Wprowadź treść zgłoszenia!",
+                Snackbar.LENGTH_SHORT
+            )
+                .show()
+        if (subject.trim().length <= 0) {
+            Snackbar.make(
+                requireView(),
+                "Wprowadź tytuł zgłoszenia!",
+                Snackbar.LENGTH_SHORT
+            )
+                .show()
+        if (deadline.trim().length <= 0) {
+            Snackbar.make(
+                requireView(),
+                "Wprowadź Termin końcowy!",
+                Snackbar.LENGTH_SHORT
+            )
+                .show()
+        }
+        }
+        }
+        else {
+            if (raport == null) {
                 profileVm.user.observe(viewLifecycleOwner, { user ->
                     mail(user)
                     FirebaseRaport(user)
+                    findNavController()
+                        .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
+                    Snackbar.make(
+                        requireView(),
+                        "Zgłoszenie zostało wysłane!",
+                        Snackbar.LENGTH_SHORT
+                    )
+                        .show()
                 })
-
+            } else {
                 findNavController()
                     .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
-                Snackbar.make(requireView(), "Zgłoszenie zostało wysłane!", Snackbar.LENGTH_SHORT)
+                Snackbar.make(
+                    requireView(),
+                    "Brak możliwości edycji!",
+                    Snackbar.LENGTH_SHORT
+                )
                     .show()
             }
         }
 
-        return false
     }
 
-}
+    private fun editReportClick(raport: Raport) {
 
+        subjectEt.setText(raport.subject)
+        deadlineET.setText(raport.deadline)
+        messageEt.setText(raport.message)
+        subjectEt.isEnabled = false
+        deadlineET.isEnabled = false
+        messageEt.isEnabled = false
+    }
+}
 
 /*
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -242,6 +317,8 @@ class RaportFragment : BaseFragment() {
    }
 
    private fun editReportZoneClick(raport: Raport) {
+
+
        raport.name?.let { getIndex(zone1_name_spinner, it) }?.let {
        zone1_name_spinner.setSelection(it)
        }
@@ -264,10 +341,10 @@ class RaportFragment : BaseFragment() {
        raport.lr17?.let { zone1_report_lp17.isChecked = it }
 
 
-    /*   raport.lr18?.let { zone1_report_lp18.isChecked = it }
+       raport.lr18?.let { zone1_report_lp18.isChecked = it }
        raport.lr21?.let { zone1_report_lp21.isChecked = it }
        raport.lr22?.let { zone1_report_lp22.isChecked = it }
-       raport.lr23?.let { zone1_report_lp23.isChecked = it }*/
+       raport.lr23?.let { zone1_report_lp23.isChecked = it }
 
        if (raport.uid != auth.currentUser?.uid) {
            zone1_name_spinner.isEnabled = false
@@ -384,7 +461,7 @@ class RaportFragment : BaseFragment() {
 
 
 }
-/*
+
 class RaportFragment : BaseFragment() {
        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                              savedInstanceState: Bundle?): View? {
@@ -497,7 +574,3 @@ class RaportFragment : BaseFragment() {
        }
 */
 
-
-
-
-*/

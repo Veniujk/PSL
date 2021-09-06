@@ -3,14 +3,17 @@ package com.example.helpdesk.data
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId
+import io.grpc.Deadline
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Raport (val id: String? = null,
                    val name: String? = null,
                    val subject: String? = null,
+                   val message:String? = null,
                    val date: Timestamp? = null,
                    val control: String? = null,
+                   val deadline: String? = null,
                    val uid:String? = null,
                    val uemail:String? = null,
                    var uwagi:String? = null,
