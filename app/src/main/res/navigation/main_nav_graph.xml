@@ -15,18 +15,23 @@
         <action
             android:id="@+id/action_homeFragment_to_raportFragment"
             app:destination="@id/raportFragment" />
+
+    </fragment>
+    <fragment
+        tools:layout="@layout/blocked"
+        android:id="@+id/callActivity"
+        android:name="com.example.helpdesk.CallActivity"
+        android:label="CallHelpdesk" >
         <action
-            android:id="@+id/action_homeFragment_to_raportFragmentz1"
-            app:destination="@id/raportFragmentz1" />
+        android:id="@+id/action_afterCalltoProfil"
+        app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/raportFragment"
         android:name="com.example.helpdesk.raport.RaportFragment"
         android:label="Wyślij zgłoszenie"
         tools:layout="@layout/fragment_mail">
-        <action
-            android:id="@+id/action_raportFragment_to_raportFragmentz1"
-            app:destination="@id/raportFragmentz1" />
+
         <action
             android:id="@+id/action_raportFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -41,28 +46,12 @@
         android:id="@+id/profileFragment"
         android:name="com.example.helpdesk.profile.ProfileFragment"
         android:label="Twój Profil" >
-        <action
-            android:id="@+id/action_profileFragment_to_raportFragmentz1"
-            app:destination="@id/raportFragmentz1" />
+
         <action
             android:id="@+id/action_profileFragment_to_raportFragment"
             app:destination="@id/raportFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/raportFragmentz1"
-        android:name="com.example.helpdesk.raport.RaportZone1Fragment"
-        android:label="Strefa I"
-        tools:layout="@layout/fragment_raport">
-        <action
-            android:id="@+id/action_raportFragmentz1_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_raportFragmentz1_to_raportFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_raportFragmentz1_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+
 
 </navigation>

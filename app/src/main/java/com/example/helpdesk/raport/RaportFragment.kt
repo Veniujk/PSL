@@ -3,29 +3,28 @@ package com.example.helpdesk.raport
 
 import android.app.Activity.RESULT_OK
 import android.content.ContentValues
-import android.content.ContentValues.TAG
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.helpdesk.BaseFragment
 import com.example.helpdesk.R
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_mail.*
-import java.util.*
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import androidx.fragment.app.viewModels
 import com.example.helpdesk.data.Raport
 import com.example.helpdesk.data.User
 import com.example.helpdesk.profile.ProfileViewModel
-import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_mail.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.util.*
 import javax.mail.*
 import javax.mail.internet.*
 
@@ -37,8 +36,8 @@ class RaportFragment : BaseFragment() {
     private val profileVm by viewModels<ProfileViewModel>()
     private val pickFromGallery:Int = 101
     lateinit var uri: Uri
-    lateinit var tvAttachment: TextView
-    lateinit var attachment: Button
+   // lateinit var tvAttachment: TextView
+   // lateinit var attachment: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,7 +93,6 @@ class RaportFragment : BaseFragment() {
         val deadline = deadlineET.text.toString().trim()
 
 
-
         val props = Properties()
         putIfMissing(props, "mail.smtp.host", "top-hosting.nazwa.pl")
         putIfMissing(props, "mail.smtp.port", "587")
@@ -118,13 +116,8 @@ class RaportFragment : BaseFragment() {
                                     "Wiadomosc: " + text )
             mimeMessage.subject = subject
             mimeMessage.sentDate = Date()
-
-
-
-           /* val emailIntent = Intent(Intent.ACTION_SEND)
+            val emailIntent = Intent(Intent.ACTION_SEND)
             emailIntent.putExtra(Intent.EXTRA_STREAM, uri)
-            this.startActivity(Intent.createChooser(emailIntent, "Sending email..."))*/
-
 
 
             val smtpTransport = session.getTransport("smtp")
@@ -136,12 +129,14 @@ class RaportFragment : BaseFragment() {
 
         }
     }
-    private fun openFolder() {
+
+
+     fun openFolder() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         intent.putExtra("return-data", true)
-        this.startActivityForResult(Intent.createChooser(intent, "Complete action using"), pickFromGallery)
+        startActivityForResult(Intent.createChooser(intent, "Complete action using"), pickFromGallery)
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -154,6 +149,8 @@ class RaportFragment : BaseFragment() {
             tvAttachment.visibility = View.VISIBLE
         }
     }
+
+
     private fun putIfMissing(props: Properties, key: String, value: String) {
         if (!props.containsKey(key)) {
             props[key] = value
@@ -182,13 +179,13 @@ class RaportFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        /*   when (item.itemId) {
+           when (item.itemId) {
             R.id.btAttachment -> {
                 openFolder()
             }
-        }*/
+        }
 
-            when (item.itemId) {
+        when (item.itemId) {
                 R.id.send_action -> {
                         checkEditable(arguments?.get("raport"))
                 }
@@ -249,7 +246,7 @@ class RaportFragment : BaseFragment() {
                     .navigate(RaportFragmentDirections.actionRaportFragmentToProfileFragment().actionId)
                 Snackbar.make(
                     requireView(),
-                    "Brak możliwości edycji!",
+                    "Brak możliwości edycji zgłoszeń!",
                     Snackbar.LENGTH_SHORT
                 )
                     .show()
@@ -267,6 +264,8 @@ class RaportFragment : BaseFragment() {
         deadlineET.isEnabled = false
         messageEt.isEnabled = false
     }
+
+
 }
 
 /*

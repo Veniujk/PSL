@@ -3,16 +3,14 @@
 
     <item
         android:id="@+id/raportFragment"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/helpdesk"
         android:title="Zgłoszenie " />
-  <!--  <item
-        android:id="@+id/homeFragment"
-        android:title="Home"
-        android:icon="@drawable/ic_list"/>
-        -->
-
+    <item
+        android:id="@+id/callActivity"
+        android:title="Zadzwoń"
+        android:icon="@drawable/phone"/>
     <item
         android:id="@+id/profileFragment"
         android:title="Profil"
-        android:icon="@drawable/ic_profile"/>
+        android:icon="@drawable/profile"/>
 </menu>
