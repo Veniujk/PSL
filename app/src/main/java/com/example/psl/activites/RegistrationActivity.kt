@@ -1,9 +1,9 @@
-package com.example.helpdesk.activites
+package com.example.psl.activites
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.helpdesk.R
+import com.example.psl.R
 import com.google.firebase.auth.FirebaseAuth
 
 class RegistrationActivity : AppCompatActivity() {

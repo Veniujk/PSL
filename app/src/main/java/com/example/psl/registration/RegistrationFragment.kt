@@ -1,4 +1,4 @@
-package com.example.helpdesk.registration
+package com.example.psl.registration
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.example.helpdesk.BaseFragment
-import com.example.helpdesk.R
+import com.example.psl.BaseFragment
+import com.example.psl.R
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class RegistrationFragment: BaseFragment() {
@@ -41,7 +41,7 @@ class RegistrationFragment: BaseFragment() {
                 fbAuth.createUserWithEmailAndPassword(email, pass)
                     .addOnSuccessListener {authRes ->
                        if(authRes.user != null){
-                           val user = com.example.helpdesk.data.User(
+                           val user = com.example.psl.data.User(
                                    authRes.user!!.uid,
                                    "",
                                    "",

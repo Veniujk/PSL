@@ -1,4 +1,4 @@
-package com.example.helpdesk.raport
+package com.example.psl.raport
 
 
 import android.app.Activity.RESULT_OK
@@ -8,22 +8,18 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.*
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.helpdesk.BaseFragment
-import com.example.helpdesk.R
-import com.example.helpdesk.data.Raport
-import com.example.helpdesk.data.User
-import com.example.helpdesk.profile.ProfileViewModel
+import com.example.psl.BaseFragment
+import com.example.psl.R
+import com.example.psl.data.Raport
+import com.example.psl.data.User
+import com.example.psl.profile.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_mail.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
 import javax.mail.*
 import javax.mail.internet.*

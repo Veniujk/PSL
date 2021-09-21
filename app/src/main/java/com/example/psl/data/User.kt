@@ -1,4 +1,4 @@
-package com.example.helpdesk.data
+package com.example.psl.data
 
 data class User(val uid: String? = null,
                 val name: String? = null,

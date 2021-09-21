@@ -1,22 +1,15 @@
-package com.example.helpdesk.home
+package com.example.psl.home
 
 
-import android.Manifest
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.helpdesk.BaseFragment
-import com.example.helpdesk.R
-import com.example.helpdesk.data.Raport
+import com.example.psl.BaseFragment
+import com.example.psl.R
+import com.example.psl.data.Raport
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 

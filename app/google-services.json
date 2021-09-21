@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "781251956342",
-    "project_id": "hdpro-helpdesk-9504d",
-    "storage_bucket": "hdpro-helpdesk-9504d.appspot.com"
+    "project_number": "154065042179",
+    "project_id": "psl-contact",
+    "storage_bucket": "psl-contact.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:781251956342:android:eaad6484049043385a1957",
+        "mobilesdk_app_id": "1:154065042179:android:78c20634ef5ab097bfc736",
         "android_client_info": {
-          "package_name": "com.example.helpdesk"
+          "package_name": "com.example.psl"
         }
       },
       "oauth_client": [
         {
-          "client_id": "781251956342-bdkrdb0oa08c3oe9e47ka3kn2a7fqpfs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.helpdesk",
-            "certificate_hash": "a29d9c3dee4954ef8412caeebf598947e7a95869"
-          }
-        },
-        {
-          "client_id": "781251956342-i60mfd3n335bgh42h09m3pi6q1fh9hq0.apps.googleusercontent.com",
+          "client_id": "154065042179-22ap8c9ep6ijeglip0er4hhl1cf02hqa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAVCXSQsfDV_6Wa0-snbfVEH-_7-TlyR1o"
+          "current_key": "AIzaSyA7FC-WDyUwgQn8PKW7uXUUJLBC1itgK6E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "781251956342-i60mfd3n335bgh42h09m3pi6q1fh9hq0.apps.googleusercontent.com",
+              "client_id": "154065042179-22ap8c9ep6ijeglip0er4hhl1cf02hqa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

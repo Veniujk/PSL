@@ -1,8 +1,8 @@
-package com.example.helpdesk.profile
+package com.example.psl.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
-import com.example.helpdesk.repository.FirebaseRepository
+import com.example.psl.repository.FirebaseRepository
 
 class ProfileViewModel : ViewModel() {
     private val repository = FirebaseRepository()

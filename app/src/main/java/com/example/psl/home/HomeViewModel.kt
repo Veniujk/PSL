@@ -1,8 +1,8 @@
-package com.example.helpdesk.home
+package com.example.psl.home
 
 import androidx.lifecycle.ViewModel
-import com.example.helpdesk.data.Raport
-import com.example.helpdesk.repository.FirebaseRepository
+import com.example.psl.data.Raport
+import com.example.psl.repository.FirebaseRepository
 
 class HomeViewModel : ViewModel() {
     private val repository = FirebaseRepository()

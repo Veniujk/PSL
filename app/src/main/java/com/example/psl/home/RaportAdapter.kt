@@ -1,4 +1,4 @@
-package com.example.helpdesk.home
+package com.example.psl.home
 
 import android.icu.text.SimpleDateFormat
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.helpdesk.R
-import com.example.helpdesk.data.Raport
+import com.example.psl.R
+import com.example.psl.data.Raport
 
 class RaportAdapter(private val listener: OnRaportItemLongClick) :
     RecyclerView.Adapter<RaportAdapter.RaportViewHolder>() {

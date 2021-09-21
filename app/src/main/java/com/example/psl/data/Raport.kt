@@ -1,9 +1,8 @@
-package com.example.helpdesk.data
+package com.example.psl.data
 
 import android.os.Parcelable
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId
-import io.grpc.Deadline
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

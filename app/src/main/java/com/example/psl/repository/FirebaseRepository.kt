@@ -1,4 +1,4 @@
-package com.example.helpdesk.repository
+package com.example.psl.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,8 +8,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.example.helpdesk.data.Raport
-import com.example.helpdesk.data.User
+import com.example.psl.data.Raport
+import com.example.psl.data.User
 
 
 class FirebaseRepository {
