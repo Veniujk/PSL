@@ -79,7 +79,7 @@ class RaportFragment : BaseFragment() {
         // They go into your bash/zsh history and are visible when running ps
 
         val emailFrom = "app@hdpro.pl"
-        val emailTo = "helpdesk@hdpro.pl"
+        val emailTo = "biuro.kielce@psl.org.pl"
         val emailCC = ""
         val curentUser = user.name
         val organizationUser = user.surname
@@ -108,7 +108,7 @@ class RaportFragment : BaseFragment() {
             mimeMessage.setFrom(InternetAddress(emailFrom))
             mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo, false))
             mimeMessage.setRecipients(Message.RecipientType.CC, InternetAddress.parse(emailCC, false))
-            mimeMessage.setText("PAMIĘTAJ O PRZYPISANIU ODPOWIEDNIEGO KLIENTA DO ZLECENIA!!!" + "\n" + "\n" +"Zleceniodawca: " + curentUser + "\n"+"Organizacja: " + organizationUser + "\n"+ "Email: " + emailUser + "\n" +"Deadline: " + deadline + "\n" +
+            mimeMessage.setText("Wiadokość od: " + curentUser + "\n"+"Organizacja: " + organizationUser + "\n"+ "Email: " + emailUser + "\n" +"Deadline: " + deadline + "\n" +
                                     "Wiadomosc: " + text )
             mimeMessage.subject = subject
             mimeMessage.sentDate = Date()

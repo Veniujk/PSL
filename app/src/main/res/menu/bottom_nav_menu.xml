@@ -4,7 +4,7 @@
     <item
         android:id="@+id/raportFragment"
         android:icon="@drawable/helpdesk"
-        android:title="Zgłoszenie " />
+        android:title="Napisz" />
     <item
         android:id="@+id/callActivity"
         android:title="Zadzwoń"

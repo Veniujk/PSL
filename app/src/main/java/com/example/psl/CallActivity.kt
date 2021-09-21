@@ -28,7 +28,7 @@ class CallActivity: Fragment() {
                 )
             }
         } else {
-            startActivity(Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:412010998")))
+            startActivity(Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:413442277")))
             findNavController()
                 .navigate(CallActivityDirections.actionAfterCalltoProfil().actionId)
         }

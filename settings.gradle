@@ -1,2 +1,2 @@
-rootProject.name = "HDPro Helpdesk"
+rootProject.name = "PSL"
 include ':app'
